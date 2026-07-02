@@ -13,14 +13,14 @@ export const defaultData = {
       title: "Lần đầu gặp gỡ",
       description: "Ánh mắt đầu tiên đã làm trái tim anh lỡ nhịp.",
       date: "2023-01-01",
-      image: "/images/memory-1.svg",
+      image: "/images/memory-2.png",
     },
     {
       id: "2",
-      title: "Chuyến đi đầu tiên",
+      title: "Quán ăn đầu tiên cùng nhau",
       description: "Cùng nhau nắm tay đi khắp thế gian.",
       date: "2023-06-15",
-      image: "/images/memory-2.svg",
+      image: "/images/memory-1.png",
     },
   ],
   gallery: [

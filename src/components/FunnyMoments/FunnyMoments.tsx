@@ -18,7 +18,7 @@ export const FunnyMoments = ({ moments }: { moments: FunnyMoment[] }) => {
         viewport={{ once: true }}
         className="text-4xl font-dancing-script text-center text-yellow-600 mb-12"
       >
-        Những Khoảnh Khắc "Dìm Hàng" 🤣
+        Những Khoảnh Khắc Đáng Yêu Của Chúng Mình 🤣
       </motion.h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
