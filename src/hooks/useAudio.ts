@@ -10,18 +10,17 @@ export function useAudio(url: string) {
   const [isPlaying, setIsPlaying] = useState(false);
   const { getCustomKey, setCustomKey } = useLocalStorage();
 
-  // Initialize once
-  if (typeof window !== "undefined" && !globalAudio) {
-    globalAudio = new Audio(url);
-    globalAudio.loop = true;
-  }
-
   useEffect(() => {
+    // Initialize once
+    if (typeof window !== "undefined" && !globalAudio) {
+      globalAudio = new Audio(url);
+      globalAudio.loop = true;
+    }
+
     if (!globalAudio) return;
 
     const savedState = getCustomKey("audio_playing");
     if (savedState === "true") {
-      setIsPlaying(true);
       globalAudio.play().catch(() => {
         setIsPlaying(false);
         setCustomKey("audio_playing", "false");
