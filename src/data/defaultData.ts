@@ -63,6 +63,25 @@ export const defaultData = {
     description: "Nhấn nút để xem phép thuật gom lại những mảnh ghép kỷ niệm của chúng mình nhé!",
     buttonText: "Hóa phép! 🪄"
   },
+  unlockConfig: {
+    firstChatDate: "17-01-2026", // Format: DD-MM-YYYY
+    maxAttempts: 7,
+    hints: [
+      { attempts: 3, text: "Là vào cuối tuần." },
+      { attempts: 5, text: "Tháng đó trời khá lạnh." },
+      { attempts: 7, text: "Anh đã nhắn trước 😆" }
+    ],
+    errorMessages: [
+      "Hình như chưa đúng rồi...",
+      "Hint nhỏ nhé ❤️",
+      "Anh nhớ là hôm đó mình nhắn tới khuya luôn đó.",
+      "Thử nhớ lại xem.",
+      "Không sao, thử thêm lần nữa nhé.",
+      "Ngày đó rất đặc biệt với anh."
+    ],
+    unlockAnimationDuration: 3000
+  },
+  firstMessageDate: "17/01/2026", // Deprecated: keeping for backwards compatibility momentarily
   startDate: "2026-01-17T00:00:00Z" // ISO string
 };
 

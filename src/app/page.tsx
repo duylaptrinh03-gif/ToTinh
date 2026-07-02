@@ -14,14 +14,16 @@ import { EndingScreen } from "@/components/EndingScreen/EndingScreen";
 import { FloatingHearts } from "@/components/Shared/FloatingHearts";
 import { VideoSection } from "@/components/VideoSection/VideoSection";
 import { MagicPuzzle } from "@/components/MagicPuzzle/MagicPuzzle";
+import { SecretUnlockScreen } from "@/components/SecretUnlock/SecretUnlockScreen";
 
 export default function Home() {
-  const { data, getCustomKey, setCustomKey } = useLocalStorage();
+  const { data, getCustomKey, setCustomKey, getSessionKey, setSessionKey } = useLocalStorage();
   const { triggerConfetti } = useConfetti();
   
   const [hasOpened, setHasOpened] = useState(false);
   const [hasAccepted, setHasAccepted] = useState(false);
   const [showSecret, setShowSecret] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
   
   // Easter Eggs State
   const [typedKeys, setTypedKeys] = useState("");
@@ -33,9 +35,15 @@ export default function Home() {
       if (getCustomKey("has_accepted") === "true") {
         setHasAccepted(true);
       }
+      if (getSessionKey("unlockSuccess") === "true") {
+        setIsUnlocked(true);
+      }
+      if (getSessionKey("has_opened") === "true") {
+        setHasOpened(true);
+      }
     }, 0);
     return () => clearTimeout(timer);
-  }, [getCustomKey]);
+  }, [getCustomKey, getSessionKey]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -65,6 +73,7 @@ export default function Home() {
 
   const handleOpen = () => {
     setHasOpened(true);
+    setSessionKey("has_opened", "true");
   };
 
   const handleAccept = () => {
@@ -82,12 +91,17 @@ export default function Home() {
     }
   };
 
-  // 1. Initial State: Landing Page
+  // 1. Initial State: Secret Unlock Screen
+  if (!isUnlocked) {
+    return <SecretUnlockScreen onUnlockComplete={() => setIsUnlocked(true)} />;
+  }
+
+  // 2. Landing Page
   if (!hasOpened) {
     return <LandingPage onOpen={handleOpen} />;
   }
 
-  // 2. Final State: Ending Screen
+  // 3. Final State: Ending Screen
   if (hasAccepted) {
     return (
       <>

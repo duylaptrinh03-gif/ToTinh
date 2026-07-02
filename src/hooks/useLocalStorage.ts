@@ -27,5 +27,15 @@ export function useLocalStorage() {
       window.localStorage.setItem(key, value);
   }, []);
 
-  return { data, setData, getCustomKey, setCustomKey };
+  const getSessionKey = useCallback((key: string) => {
+      if (typeof window === "undefined") return null;
+      return window.sessionStorage.getItem(key);
+  }, []);
+  
+  const setSessionKey = useCallback((key: string, value: string) => {
+      if (typeof window === "undefined") return;
+      window.sessionStorage.setItem(key, value);
+  }, []);
+
+  return { data, setData, getCustomKey, setCustomKey, getSessionKey, setSessionKey };
 }
