@@ -129,7 +129,7 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-dancing-script text-pink-600 mb-6 drop-shadow-sm">
             Gửi {data.profile.herName}...
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-serif">
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
             Hôm nay là một ngày đặc biệt, và anh có vài điều muốn nói với em.
           </p>
         </div>

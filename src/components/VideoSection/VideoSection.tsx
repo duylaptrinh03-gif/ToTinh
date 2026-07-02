@@ -22,7 +22,7 @@ export const VideoSection = ({ videos }: VideoSectionProps) => {
         <h2 className="text-4xl md:text-5xl font-dancing-script text-pink-500 mb-4 drop-shadow-sm">
           Thước phim kỉ niệm 🎬
         </h2>
-        <p className="text-gray-600 font-serif text-lg">
+        <p className="text-gray-600 text-lg">
           Những giây phút không thể nào quên...
         </p>
       </motion.div>
@@ -63,7 +63,7 @@ export const VideoSection = ({ videos }: VideoSectionProps) => {
                   {video.title}
                 </h3>
                 {video.description && (
-                  <p className="text-gray-600 font-serif">
+                  <p className="text-gray-600">
                     {video.description}
                   </p>
                 )}

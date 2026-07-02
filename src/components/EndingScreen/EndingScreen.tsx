@@ -37,7 +37,7 @@ export const EndingScreen = ({ onHug }: EndingScreenProps) => {
         <h2 className="text-4xl md:text-5xl font-dancing-script text-gray-800 mb-4">
           Cảm ơn em đã đồng ý.
         </h2>
-        <p className="text-xl md:text-2xl text-gray-600 font-serif italic mb-10">
+        <p className="text-xl md:text-2xl text-gray-600 italic mb-10">
           "Anh hứa sẽ luôn làm em cười."
         </p>
 

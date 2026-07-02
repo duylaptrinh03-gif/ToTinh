@@ -29,7 +29,7 @@ export const LoveMessages = ({ messages }: { messages: string[] }) => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-700 italic leading-relaxed"
+              className="text-2xl md:text-3xl lg:text-4xl text-gray-700 italic leading-relaxed"
             >
               {isTyping ? (
                 <TypewriterText 
