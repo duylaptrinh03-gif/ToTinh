@@ -13,6 +13,7 @@ import { ProposalSection } from "@/components/ProposalSection/ProposalSection";
 import { EndingScreen } from "@/components/EndingScreen/EndingScreen";
 import { MusicPlayer } from "@/components/MusicPlayer/MusicPlayer";
 import { FloatingHearts } from "@/components/Shared/FloatingHearts";
+import { VideoSection } from "@/components/VideoSection/VideoSection";
 
 export default function Home() {
   const { data, getCustomKey, setCustomKey } = useLocalStorage();
@@ -147,6 +148,11 @@ export default function Home() {
       {/* Funny Moments Section */}
       <section className="relative z-10 bg-white">
         <FunnyMoments moments={data.funnyMoments} />
+      </section>
+
+      {/* Video Section */}
+      <section className="relative z-10 bg-pink-50">
+        <VideoSection videos={data.videos} />
       </section>
 
       {/* Love Counter Section */}

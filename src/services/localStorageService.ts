@@ -1,6 +1,6 @@
 import { defaultData, DefaultData } from "../data/defaultData";
 
-const STORAGE_KEY = "proposal_website_data_v3";
+const STORAGE_KEY = "proposal_website_data_v5";
 
 export const localStorageService = {
   get: (): DefaultData => {
@@ -8,7 +8,9 @@ export const localStorageService = {
     try {
       const item = window.localStorage.getItem(STORAGE_KEY);
       if (item) {
-        return JSON.parse(item) as DefaultData;
+        const parsed = JSON.parse(item);
+        // Merge with defaultData to ensure new fields (like videos) exist
+        return { ...defaultData, ...parsed } as DefaultData;
       }
       return defaultData;
     } catch (error) {

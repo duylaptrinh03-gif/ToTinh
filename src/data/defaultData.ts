@@ -37,6 +37,14 @@ export const defaultData = {
       caption: "Mặt em lúc giận dỗi nhìn cưng xỉu lun 😂",
     }
   ],
+  videos: [
+    {
+      id: "1",
+      url: "/videos/7949682719301.mp4",
+      title: "Khoảnh khắc đáng nhớ nhất của chúng mình ✨",
+      description: "Nhìn lại những giây phút tuyệt vời này nhé..."
+    }
+  ],
   messages: [
     "Anh thích nụ cười của em...",
     "Thích cách em nhõng nhẽo...",
@@ -49,7 +57,7 @@ export const defaultData = {
     acceptButton: "Đồng ý",
     rejectButton: "Không bao giờ",
   },
-  startDate: "2023-01-01T00:00:00Z" // ISO string
+  startDate: "2026-01-17T00:00:00Z" // ISO string
 };
 
 export type DefaultData = typeof defaultData;
