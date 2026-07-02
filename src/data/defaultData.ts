@@ -1,0 +1,55 @@
+export const defaultData = {
+  profile: {
+    yourName: "Chàng Trai",
+    herName: "Cô Gái",
+  },
+  settings: {
+    themeColor: "#ff4d6d",
+    backgroundColor: "#fff0f3",
+  },
+  memories: [
+    {
+      id: "1",
+      title: "Lần đầu gặp gỡ",
+      description: "Ánh mắt đầu tiên đã làm trái tim anh lỡ nhịp.",
+      date: "2023-01-01",
+      image: "/images/memory-1.svg",
+    },
+    {
+      id: "2",
+      title: "Chuyến đi đầu tiên",
+      description: "Cùng nhau nắm tay đi khắp thế gian.",
+      date: "2023-06-15",
+      image: "/images/memory-2.svg",
+    },
+  ],
+  gallery: [
+    "/images/gallery-1.svg",
+    "/images/gallery-2.svg",
+    "/images/gallery-3.svg",
+    "/images/gallery-4.svg",
+    "https://www.w3schools.com/html/mov_bbb.mp4"
+  ],
+  funnyMoments: [
+    {
+      id: "1",
+      image: "/images/funny-1.svg",
+      caption: "Mặt em lúc giận dỗi nhìn cưng xỉu lun 😂",
+    }
+  ],
+  messages: [
+    "Anh thích nụ cười của em...",
+    "Thích cách em nhõng nhẽo...",
+    "Và thích tất cả mọi thứ thuộc về em ❤️",
+    "Có em, mỗi ngày trôi qua đều là một ngày nắng đẹp.",
+    "Cảm ơn em vì đã đến bên anh."
+  ],
+  proposal: {
+    title: "Làm người yêu anh nhé? ❤️",
+    acceptButton: "Đồng ý",
+    rejectButton: "Không bao giờ",
+  },
+  startDate: "2023-01-01T00:00:00Z" // ISO string
+};
+
+export type DefaultData = typeof defaultData;
