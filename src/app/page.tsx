@@ -32,7 +32,7 @@ export default function Home() {
   useEffect(() => {
     // Wrap in a setTimeout to make it asynchronous and avoid React's synchronous setState warning
     const timer = setTimeout(() => {
-      if (getCustomKey("has_accepted") === "true") {
+      if (getSessionKey("has_accepted") === "true") {
         setHasAccepted(true);
       }
       if (getSessionKey("unlockSuccess") === "true") {
@@ -78,7 +78,7 @@ export default function Home() {
 
   const handleAccept = () => {
     setHasAccepted(true);
-    setCustomKey("has_accepted", "true");
+    setSessionKey("has_accepted", "true");
     triggerConfetti();
   };
 
@@ -112,8 +112,11 @@ export default function Home() {
 
   // 3. Main Content Journey
   return (
-    <main className="relative bg-pink-50 min-h-screen overflow-x-hidden">
+    <main className="relative min-h-screen overflow-x-hidden text-gray-800">
       
+      {/* Animated Aurora Background Layer */}
+      <div className="aurora-bg"></div>
+
       {/* Secret popup trigger area (Invisible header/logo) */}
       <div 
         onClick={handleLogoClick}
@@ -131,55 +134,55 @@ export default function Home() {
       )}
 
       {/* Intro Section with floating hearts */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-pink-100 to-pink-50">
+      <section className="relative min-h-[60vh] flex items-center justify-center pt-20">
         <FloatingHearts />
         <div className="text-center z-10 px-4">
           <h1 className="text-4xl md:text-6xl font-dancing-script text-pink-600 mb-6 drop-shadow-sm">
             Gửi {data.profile.herName}...
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-700 font-medium max-w-2xl mx-auto drop-shadow-sm">
             Hôm nay là một ngày đặc biệt, và anh có vài điều muốn nói với em.
           </p>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="relative z-10 bg-white">
+      <section className="relative z-10 py-10">
         <Timeline memories={data.memories} />
       </section>
 
       {/* Gallery Section */}
-      <section className="relative z-10 bg-pink-50">
+      <section className="relative z-10 py-10">
         <Gallery images={data.gallery} />
       </section>
 
       {/* Funny Moments Section */}
-      <section className="relative z-10 bg-white">
+      <section className="relative z-10 py-10">
         <FunnyMoments moments={data.funnyMoments} />
       </section>
 
       {/* Video Section */}
-      <section className="relative z-10 bg-pink-50">
+      <section className="relative z-10 py-10">
         <VideoSection videos={data.videos} />
       </section>
 
       {/* Love Counter Section */}
-      <section className="relative z-10">
+      <section className="relative z-10 py-10">
         <LoveCounter startDate={data.startDate} />
       </section>
 
       {/* Love Messages Section */}
-      <section className="relative z-10 bg-white">
+      <section className="relative z-10 py-10">
         <LoveMessages messages={data.messages} />
       </section>
 
       {/* Magic Puzzle Section */}
-      <section className="relative z-10 bg-pink-50">
+      <section className="relative z-10 py-10">
         <MagicPuzzle data={data.puzzle} />
       </section>
 
       {/* Proposal Section */}
-      <section className="relative z-10 pb-20">
+      <section className="relative z-10 pb-32 pt-10">
         <ProposalSection 
           title={data.proposal.title}
           acceptText={data.proposal.acceptButton}

@@ -7,7 +7,8 @@
 
 @layer base {
   body {
-    @apply antialiased bg-pink-50 text-gray-800;
+    @apply antialiased text-gray-800;
+    /* Removed static bg-pink-50 to let the animated background shine through */
   }
 }
 
@@ -25,19 +26,41 @@
   .font-dancing-script {
     font-family: var(--font-dancing-script);
   }
+
+  /* --- Premium UI Utilities --- */
+  
+  /* Glassmorphism Classes */
+  .glass-panel {
+    @apply bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_0_rgba(255,192,203,0.3)];
+  }
+  
+  .glass-card {
+    @apply bg-white/30 backdrop-blur-md border border-white/50 shadow-[0_4px_24px_0_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_0_rgba(255,105,180,0.15)] transition-all duration-500;
+  }
+
+  /* Aurora Gradient Mesh Animation */
+  .aurora-bg {
+    background: linear-gradient(-45deg, #ffd1dc, #ffb6c1, #e6e6fa, #fff0f5);
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
 }
 
 @keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

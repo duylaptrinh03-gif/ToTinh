@@ -60,8 +60,8 @@ export const defaultData = {
   puzzle: {
     image: "/images/memory-3.jpg",
     title: "Phép màu Tình yêu ✨",
-    description: "Nhấn nút để xem phép thuật gom lại những mảnh ghép kỷ niệm của chúng mình nhé!",
-    buttonText: "Hóa phép! 🪄"
+    description: "Ấn vào để xem phép thuật gom lại những mảnh ghép kỷ niệm của chúng mình nhé!",
+    buttonText: "Ấn vào sẽ có điều bất ngờ! 🪄"
   },
   unlockConfig: {
     firstChatDate: "17-01-2026", // Format: DD-MM-YYYY

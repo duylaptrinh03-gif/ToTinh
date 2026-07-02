@@ -114,7 +114,7 @@ export const MagicPuzzle = ({ data }: MagicPuzzleProps) => {
         onClick={() => setIsAssembled(!isAssembled)}
         className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-10 rounded-full shadow-lg text-2xl transition-colors duration-300 z-30 relative"
       >
-        {isAssembled ? "Làm vỡ lại 💔" : data.buttonText}
+        {isAssembled ? "Làm vụn 💔" : data.buttonText}
       </motion.button>
     </div>
   );
