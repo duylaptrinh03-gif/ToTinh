@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useConfetti } from "@/hooks/useConfetti";
-import { useAudio } from "@/hooks/useAudio";
 import { LandingPage } from "@/components/LandingPage/LandingPage";
 import { Timeline } from "@/components/Timeline/Timeline";
 import { Gallery } from "@/components/Gallery/Gallery";
@@ -12,14 +11,12 @@ import { LoveCounter } from "@/components/LoveCounter/LoveCounter";
 import { LoveMessages } from "@/components/LoveMessages/LoveMessages";
 import { ProposalSection } from "@/components/ProposalSection/ProposalSection";
 import { EndingScreen } from "@/components/EndingScreen/EndingScreen";
-import { MusicPlayer } from "@/components/MusicPlayer/MusicPlayer";
 import { FloatingHearts } from "@/components/Shared/FloatingHearts";
 import { VideoSection } from "@/components/VideoSection/VideoSection";
 
 export default function Home() {
   const { data, getCustomKey, setCustomKey } = useLocalStorage();
   const { triggerConfetti } = useConfetti();
-  const { playDirectly } = useAudio("/music/background.mp3");
   
   const [hasOpened, setHasOpened] = useState(false);
   const [hasAccepted, setHasAccepted] = useState(false);
@@ -67,7 +64,6 @@ export default function Home() {
 
   const handleOpen = () => {
     setHasOpened(true);
-    playDirectly(); // Bypass iOS autoplay by calling this synchronously in the onClick handler
   };
 
   const handleAccept = () => {
@@ -94,7 +90,6 @@ export default function Home() {
   if (hasAccepted) {
     return (
       <>
-        <MusicPlayer />
         <EndingScreen onHug={() => alert(`Yêu ${data.profile.herName} nhất trên đời! ❤️`)} />
       </>
     );
@@ -103,7 +98,6 @@ export default function Home() {
   // 3. Main Content Journey
   return (
     <main className="relative bg-pink-50 min-h-screen overflow-x-hidden">
-      <MusicPlayer />
       
       {/* Secret popup trigger area (Invisible header/logo) */}
       <div 
