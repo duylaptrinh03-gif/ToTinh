@@ -13,6 +13,7 @@ import { ProposalSection } from "@/components/ProposalSection/ProposalSection";
 import { EndingScreen } from "@/components/EndingScreen/EndingScreen";
 import { FloatingHearts } from "@/components/Shared/FloatingHearts";
 import { VideoSection } from "@/components/VideoSection/VideoSection";
+import { MagicPuzzle } from "@/components/MagicPuzzle/MagicPuzzle";
 
 export default function Home() {
   const { data, getCustomKey, setCustomKey } = useLocalStorage();
@@ -156,6 +157,11 @@ export default function Home() {
       {/* Love Messages Section */}
       <section className="relative z-10 bg-white">
         <LoveMessages messages={data.messages} />
+      </section>
+
+      {/* Magic Puzzle Section */}
+      <section className="relative z-10 bg-pink-50">
+        <MagicPuzzle data={data.puzzle} />
       </section>
 
       {/* Proposal Section */}

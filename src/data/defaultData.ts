@@ -57,6 +57,12 @@ export const defaultData = {
     acceptButton: "Đồng ý",
     rejectButton: "Không bao giờ",
   },
+  puzzle: {
+    image: "/images/memory-3.jpg",
+    title: "Phép màu Tình yêu ✨",
+    description: "Nhấn nút để xem phép thuật gom lại những mảnh ghép kỷ niệm của chúng mình nhé!",
+    buttonText: "Hóa phép! 🪄"
+  },
   startDate: "2026-01-17T00:00:00Z" // ISO string
 };
 

@@ -1,6 +1,6 @@
 import { defaultData, DefaultData } from "../data/defaultData";
 
-const STORAGE_KEY = "proposal_website_data_v22";
+const STORAGE_KEY = "proposal_website_data_v471";
 
 export const localStorageService = {
   get: (): DefaultData => {
