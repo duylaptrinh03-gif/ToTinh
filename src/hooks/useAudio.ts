@@ -1,48 +1,68 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+
+// Global singleton to share the audio instance and bypass iOS strict autoplay restrictions
+let globalAudio: HTMLAudioElement | null = null;
 
 export function useAudio(url: string) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { getCustomKey, setCustomKey } = useLocalStorage();
 
+  // Initialize once
+  if (typeof window !== "undefined" && !globalAudio) {
+    globalAudio = new Audio(url);
+    globalAudio.loop = true;
+  }
+
   useEffect(() => {
-    audioRef.current = new Audio(url);
-    audioRef.current.loop = true;
+    if (!globalAudio) return;
 
     const savedState = getCustomKey("audio_playing");
     if (savedState === "true") {
       setIsPlaying(true);
-      // Browsers often block autoplay without interaction, but we'll try
-      audioRef.current.play().catch(() => {
+      globalAudio.play().catch(() => {
         setIsPlaying(false);
         setCustomKey("audio_playing", "false");
       });
     }
 
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    
+    globalAudio.addEventListener('play', onPlay);
+    globalAudio.addEventListener('pause', onPause);
+    
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
+      if (globalAudio) {
+        globalAudio.removeEventListener('play', onPlay);
+        globalAudio.removeEventListener('pause', onPause);
       }
     };
-  }, [url, getCustomKey, setCustomKey]);
+  }, [getCustomKey, setCustomKey]);
 
   const toggleAudio = () => {
-    if (!audioRef.current) return;
+    if (!globalAudio) return;
 
     if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
+      globalAudio.pause();
       setCustomKey("audio_playing", "false");
     } else {
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
+      globalAudio.play().then(() => {
         setCustomKey("audio_playing", "true");
       }).catch(err => console.error("Error playing audio:", err));
     }
   };
+  
+  const playDirectly = () => {
+     if (globalAudio) {
+       globalAudio.play().then(() => {
+         setCustomKey("audio_playing", "true");
+         setIsPlaying(true);
+       }).catch(e => console.error("iOS AutoPlay block bypassed error:", e));
+     }
+  };
 
-  return { isPlaying, toggleAudio };
+  return { isPlaying, toggleAudio, playDirectly };
 }

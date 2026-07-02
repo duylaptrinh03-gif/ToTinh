@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useConfetti } from "@/hooks/useConfetti";
+import { useAudio } from "@/hooks/useAudio";
 import { LandingPage } from "@/components/LandingPage/LandingPage";
 import { Timeline } from "@/components/Timeline/Timeline";
 import { Gallery } from "@/components/Gallery/Gallery";
@@ -18,6 +19,7 @@ import { VideoSection } from "@/components/VideoSection/VideoSection";
 export default function Home() {
   const { data, getCustomKey, setCustomKey } = useLocalStorage();
   const { triggerConfetti } = useConfetti();
+  const { playDirectly } = useAudio("/music/background.mp3");
   
   const [hasOpened, setHasOpened] = useState(false);
   const [hasAccepted, setHasAccepted] = useState(false);
@@ -30,9 +32,6 @@ export default function Home() {
   useEffect(() => {
     // Wrap in a setTimeout to make it asynchronous and avoid React's synchronous setState warning
     const timer = setTimeout(() => {
-      if (getCustomKey("has_opened") === "true") {
-        setHasOpened(true);
-      }
       if (getCustomKey("has_accepted") === "true") {
         setHasAccepted(true);
       }
@@ -68,7 +67,7 @@ export default function Home() {
 
   const handleOpen = () => {
     setHasOpened(true);
-    setCustomKey("has_opened", "true");
+    playDirectly(); // Bypass iOS autoplay by calling this synchronously in the onClick handler
   };
 
   const handleAccept = () => {

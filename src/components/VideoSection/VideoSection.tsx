@@ -41,14 +41,12 @@ export const VideoSection = ({ videos }: VideoSectionProps) => {
             <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-rose-300 to-purple-400 rounded-3xl blur-md opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
             
             {/* Video Container */}
-            <div className="relative bg-white p-4 rounded-3xl shadow-xl">
-              <div className="overflow-hidden rounded-2xl relative aspect-video bg-black flex items-center justify-center">
+            <div className="relative bg-white p-2 md:p-4 rounded-3xl shadow-xl">
+              <div className="overflow-hidden rounded-2xl relative bg-black/5 flex items-center justify-center w-full">
                 <video
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto max-h-[75vh] object-contain rounded-xl shadow-inner"
                   controls
                   playsInline
-                  autoPlay
-                  muted
                   loop
                   preload="metadata"
                 >
